@@ -15,7 +15,7 @@ A single-screen vocabulary learning app using SwiftUI, SwiftData, and The Compos
 
 ## 🚀 Build & Run
 
-1. Requires **Xcode 15+**, iOS 17+
+1. Requires **Xcode 16+**, iOS 18+
 2. Clone repo and open `.xcodeproj` or `.xcworkspace`
 3. Run the app on an iOS simulator or device (no networking needed)
 
