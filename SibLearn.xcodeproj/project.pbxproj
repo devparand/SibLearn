@@ -29,9 +29,30 @@
 		428316672E3A7F4C00549299 /* SibLearnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SibLearnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		42552D1F2E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Feature/Home/View/CircularProgressView.swift,
+			);
+			target = 4283165C2E3A7F4C00549299 /* SibLearnTests */;
+		};
+		42552D202E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Feature/Home/View/CircularProgressView.swift,
+			);
+			target = 428316662E3A7F4C00549299 /* SibLearnUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4283164D2E3A7F4A00549299 /* SibLearn */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				42552D1F2E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnTests" target */,
+				42552D202E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnUITests" target */,
+			);
 			path = SibLearn;
 			sourceTree = "<group>";
 		};
