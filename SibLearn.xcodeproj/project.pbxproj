@@ -33,6 +33,16 @@
 		42552D1F2E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Commons/extension.swift,
+				Data/DBManager/Mapper/WordCardMapper.swift,
+				Data/DBManager/Mapper/XPTrackerMapper.swift,
+				Data/DBManager/WordCard/WordCardEntity.swift,
+				Data/DBManager/WordCard/XPTrackerEntity.swift,
+				Data/Impl/WordCardProviderImpl.swift,
+				Domain/API/WordCardProvider.swift,
+				Domain/Logic/FlashCardManager.swift,
+				Feature/Home/Dependency/FlashCardReducer.swift,
+				Feature/Home/Logic/FlashCardViewModel.swift,
 				Feature/Home/View/CircularProgressView.swift,
 			);
 			target = 4283165C2E3A7F4C00549299 /* SibLearnTests */;
@@ -40,6 +50,16 @@
 		42552D202E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Commons/extension.swift,
+				Data/DBManager/Mapper/WordCardMapper.swift,
+				Data/DBManager/Mapper/XPTrackerMapper.swift,
+				Data/DBManager/WordCard/WordCardEntity.swift,
+				Data/DBManager/WordCard/XPTrackerEntity.swift,
+				Data/Impl/WordCardProviderImpl.swift,
+				Domain/API/WordCardProvider.swift,
+				Domain/Logic/FlashCardManager.swift,
+				Feature/Home/Dependency/FlashCardReducer.swift,
+				Feature/Home/Logic/FlashCardViewModel.swift,
 				Feature/Home/View/CircularProgressView.swift,
 			);
 			target = 428316662E3A7F4C00549299 /* SibLearnUITests */;

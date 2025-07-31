@@ -1,5 +1,5 @@
 //
-//  FlashCartView.swift
+//  FlashCardView.swift
 //  SibLearn
 //
 //  Created by Parsa on 7/31/25.
@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct FlashCartView: View {
-    
-    @Binding
+struct FlashCardView: View {
+
     
     var body: some View {
         VStack(spacing: 0) {
@@ -59,5 +58,5 @@ struct FlashCartView: View {
 }
 
 #Preview {
-    FlashCartView()
+    FlashCardView()
 }
