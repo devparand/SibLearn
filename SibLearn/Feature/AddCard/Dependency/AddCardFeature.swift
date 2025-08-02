@@ -57,7 +57,7 @@ extension AddCardFeature {
     private func performAddFlashCard(word: String, meaning: String) -> Effect<Action> {
         return .run { [provider = flashCardProvider] send in
             do {
-                try await provider.addFlashCard(flashCard: FlashCard(id: UUID().uuidString, word: word, meaning: meaning, isCorrect: false, createdAt: Int(Date().timeIntervalSince1970)))
+                try await provider.addFlashCard(flashCard: FlashCard(id: UUID().uuidString, word: word, meaning: meaning, isCorrect: false, createdAt: .now))
                 await send(.dismissView)
             }
             catch {
