@@ -39,7 +39,7 @@ public final class FlashCardDataAccessObject: @unchecked Sendable {
             entity.word = flashCard.word
             entity.meaning = flashCard.meaning
             entity.isCorrect = nil
-            entity.createdAt = Int(Date().timeIntervalSince1970)
+            entity.createdAt = .now
             try context.save()
             flashCardPublisher.send(createSchema(from: entity))
         }

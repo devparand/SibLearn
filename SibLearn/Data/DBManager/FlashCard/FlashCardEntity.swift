@@ -17,7 +17,7 @@ final class FlashCardEntity: @unchecked Sendable {
     var isCorrect: Bool?
     var createdAt: Int
     
-    init(word: String, meaning: String, isCorrect: Bool? = nil, createAt: Int = Int(Date().timeIntervalSince1970)) {
+    init(word: String, meaning: String, isCorrect: Bool? = nil, createAt: Int = .now) {
         self.word = word
         self.meaning = meaning
         self.isCorrect = isCorrect
