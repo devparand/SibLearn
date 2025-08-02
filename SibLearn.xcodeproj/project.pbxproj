@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		790BB4E22E3BAEB60074FD12 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 790BB4E12E3BAEB60074FD12 /* ComposableArchitecture */; };
+		790BB4E42E3BAEC20074FD12 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 790BB4E32E3BAEC20074FD12 /* ComposableArchitecture */; };
+		790BB4E72E3BAF250074FD12 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 790BB4E62E3BAF250074FD12 /* ComposableArchitecture */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4283165E2E3A7F4C00549299 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -33,36 +39,58 @@
 		42552D1F2E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Commons/extension.swift,
+				"Commons/Extensions/Extension+FlashCartProvider+Dependency.swift",
+				"Commons/Extensions/Extension+XPTrackerProvider+Dependency.swift",
+				Data/DBManager/FlashCard/FlashCardDataAccessObject.swift,
+				Data/DBManager/FlashCard/FlashCardEntity.swift,
 				Data/DBManager/Mapper/WordCardMapper.swift,
 				Data/DBManager/Mapper/XPTrackerMapper.swift,
-				Data/DBManager/WordCard/WordCardEntity.swift,
-				Data/DBManager/WordCard/XPTrackerEntity.swift,
-				Data/Impl/WordCardProviderImpl.swift,
-				Domain/API/WordCardProvider.swift,
-				Domain/Logic/FlashCardManager.swift,
+				Data/DBManager/Model/FlashCardSchema.swift,
+				Data/DBManager/Model/XPTrackerSchema.swift,
+				Data/DBManager/XPTracker/XPTrackerDataAccessObject.swift,
+				Data/DBManager/XPTracker/XPTrackerEntity.swift,
+				Data/Impl/FlashCardProviderImpl.swift,
+				Data/Impl/XPTrackerProviderImpl.swift,
+				Domain/API/FlashCardProvider.swift,
+				Domain/API/XPTrackerProvider.swift,
+				Domain/Logic/FlashCard/FlashCardManager.swift,
+				Feature/AddCard/Dependency/XPTrackerFeature.swift,
 				Feature/AddCard/View/AddCardView.swift,
-				Feature/Home/Dependency/FlashCardReducer.swift,
-				Feature/Home/Logic/FlashCardViewModel.swift,
+				Feature/Home/Dependency/FlashCardFeature.swift,
 				Feature/Home/View/CircularProgressView.swift,
+				Feature/Home/View/FlashCard/CardView.swift,
+				Feature/Home/View/FlashCard/FlashCardView.swift,
+				Feature/Home/View/HomeNavigationBarView.swift,
+				Feature/Home/View/XpTrackerView.swift,
 			);
 			target = 4283165C2E3A7F4C00549299 /* SibLearnTests */;
 		};
 		42552D202E3B665200404157 /* Exceptions for "SibLearn" folder in "SibLearnUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Commons/extension.swift,
+				"Commons/Extensions/Extension+FlashCartProvider+Dependency.swift",
+				"Commons/Extensions/Extension+XPTrackerProvider+Dependency.swift",
+				Data/DBManager/FlashCard/FlashCardDataAccessObject.swift,
+				Data/DBManager/FlashCard/FlashCardEntity.swift,
 				Data/DBManager/Mapper/WordCardMapper.swift,
 				Data/DBManager/Mapper/XPTrackerMapper.swift,
-				Data/DBManager/WordCard/WordCardEntity.swift,
-				Data/DBManager/WordCard/XPTrackerEntity.swift,
-				Data/Impl/WordCardProviderImpl.swift,
-				Domain/API/WordCardProvider.swift,
-				Domain/Logic/FlashCardManager.swift,
+				Data/DBManager/Model/FlashCardSchema.swift,
+				Data/DBManager/Model/XPTrackerSchema.swift,
+				Data/DBManager/XPTracker/XPTrackerDataAccessObject.swift,
+				Data/DBManager/XPTracker/XPTrackerEntity.swift,
+				Data/Impl/FlashCardProviderImpl.swift,
+				Data/Impl/XPTrackerProviderImpl.swift,
+				Domain/API/FlashCardProvider.swift,
+				Domain/API/XPTrackerProvider.swift,
+				Domain/Logic/FlashCard/FlashCardManager.swift,
+				Feature/AddCard/Dependency/XPTrackerFeature.swift,
 				Feature/AddCard/View/AddCardView.swift,
-				Feature/Home/Dependency/FlashCardReducer.swift,
-				Feature/Home/Logic/FlashCardViewModel.swift,
+				Feature/Home/Dependency/FlashCardFeature.swift,
 				Feature/Home/View/CircularProgressView.swift,
+				Feature/Home/View/FlashCard/CardView.swift,
+				Feature/Home/View/FlashCard/FlashCardView.swift,
+				Feature/Home/View/HomeNavigationBarView.swift,
+				Feature/Home/View/XpTrackerView.swift,
 			);
 			target = 428316662E3A7F4C00549299 /* SibLearnUITests */;
 		};
@@ -95,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790BB4E72E3BAF250074FD12 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790BB4E22E3BAEB60074FD12 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790BB4E42E3BAEC20074FD12 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +152,7 @@
 				4283164D2E3A7F4A00549299 /* SibLearn */,
 				428316602E3A7F4C00549299 /* SibLearnTests */,
 				4283166A2E3A7F4C00549299 /* SibLearnUITests */,
+				790BB4E52E3BAF0B0074FD12 /* Frameworks */,
 				4283164C2E3A7F4A00549299 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,6 +165,13 @@
 				428316672E3A7F4C00549299 /* SibLearnUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		790BB4E52E3BAF0B0074FD12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +194,7 @@
 			);
 			name = SibLearn;
 			packageProductDependencies = (
+				790BB4E62E3BAF250074FD12 /* ComposableArchitecture */,
 			);
 			productName = SibLearn;
 			productReference = 4283164B2E3A7F4A00549299 /* SibLearn.app */;
@@ -178,6 +218,7 @@
 			);
 			name = SibLearnTests;
 			packageProductDependencies = (
+				790BB4E12E3BAEB60074FD12 /* ComposableArchitecture */,
 			);
 			productName = SibLearnTests;
 			productReference = 4283165D2E3A7F4C00549299 /* SibLearnTests.xctest */;
@@ -201,6 +242,7 @@
 			);
 			name = SibLearnUITests;
 			packageProductDependencies = (
+				790BB4E32E3BAEC20074FD12 /* ComposableArchitecture */,
 			);
 			productName = SibLearnUITests;
 			productReference = 428316672E3A7F4C00549299 /* SibLearnUITests.xctest */;
@@ -442,6 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SibLearn/Preview Content\"";
+				DEVELOPMENT_TEAM = TV7JV673X2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -471,6 +514,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SibLearn/Preview Content\"";
+				DEVELOPMENT_TEAM = TV7JV673X2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -611,6 +655,24 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		790BB4E12E3BAEB60074FD12 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4283167A2E3A825D00549299 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		790BB4E32E3BAEC20074FD12 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4283167A2E3A825D00549299 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		790BB4E62E3BAF250074FD12 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4283167A2E3A825D00549299 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 428316432E3A7F4A00549299 /* Project object */;
 }

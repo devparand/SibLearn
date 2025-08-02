@@ -6,41 +6,45 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct AddCardView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State private var wordValue: String = ""
-    @State private var meaningValue: String = ""
-    var onAddCardTapped: (() -> Void)?
+    let store: StoreOf<XPTrackerFeature>
+    
+    init(store: StoreOf<XPTrackerFeature>) {
+        self.store = store
+    }
     
     var body: some View {
         
         NavigationStack {
             VStack {
-                customInputView(title: "Word", value: $wordValue)
-                
-                Divider()
-                    .background(Color.white)
-                    .padding(.leading)
-                
-                customInputView(title: "Meaning", value: $meaningValue)
-                
-                Button {
-                    dismiss()
-                    onAddCardTapped?()
-                } label: {
-                    Text("Add card")
-                        .foregroundStyle(Color.white)
-                        .font(.system(size: 18, weight: .semibold))
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background {
-                            Color("DP")
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                        }
-                        .padding()
+                WithViewStore(store, observe: \.self) { viewStore in
+                    customInputView(title: "Word", value: viewStore.binding(get: { state in
+                        state.wordValue
+                    }, send: { value in
+                            .setWordValue(value)
+                    }))
+                    
+                    Divider()
+                        .background(Color.white)
+                        .padding(.leading)
+                    
+                    customInputView(title: "Meaning", value: viewStore.binding(get: { state in
+                        state.meaningValue
+                    }, send: { value in
+                            .setMeaningValue(value)
+                    }))
+                    
+                    addFlashCardButton(isDisabled: viewStore.state.wordValue.isEmpty || viewStore.state.meaningValue.isEmpty) {
+                        viewStore.send(.addFlashCard(word: viewStore.state.wordValue, meaning: viewStore.state.meaningValue))
+                    }
+                    .onChange(of: viewStore.isAddingFlashCard) { oldValue, newValue in
+                        dismiss()
+                    }
                 }
 
             }
@@ -60,9 +64,38 @@ struct AddCardView: View {
 
                 }
             }
+            
+            
         }
         .colorScheme(.dark)
         
+    }
+    
+    @ViewBuilder
+    private func addFlashCardButton(isDisabled: Bool, onTap: @escaping () -> Void) -> some View {
+        Button {
+            onTap()
+        } label: {
+            Text("Add card")
+                .foregroundStyle(Color.white)
+                .font(.system(size: 18, weight: .semibold))
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background {
+                    ZStack {
+                        if isDisabled {
+                            Color.gray
+                        }
+                        else {
+                            Color("DP")
+                        }
+                            
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                }
+                .padding()
+        }
+        .disabled(isDisabled)
     }
     
     @ViewBuilder
@@ -89,5 +122,9 @@ struct AddCardView: View {
 }
 
 #Preview {
-    AddCardView()
+    AddCardView(
+        store: Store(initialState: XPTrackerFeature.State()) {
+            XPTrackerFeature()
+        }
+    )
 }

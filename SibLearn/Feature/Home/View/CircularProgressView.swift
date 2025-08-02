@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CircularProgressView: View {
-    @Binding var progress: Double
+    var progress: Double
+    var totalXP: Int
     private let lineWidth: CGFloat = 10
     private let size: CGFloat = 80
 
@@ -30,7 +31,7 @@ struct CircularProgressView: View {
                 .animation(.easeOut(duration: 0.5), value: progress)
 
             VStack(spacing: -4) {
-                Text("50")
+                Text("\(totalXP)")
                     .font(.system(size: 24, weight: .bold))
                 Text("xp")
                     .font(.system(size: 12, weight: .light))
@@ -38,8 +39,4 @@ struct CircularProgressView: View {
         }
         .frame(width: size, height: size)
     }
-}
-
-#Preview {
-    HomeView()
 }

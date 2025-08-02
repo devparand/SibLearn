@@ -6,9 +6,11 @@ A single-screen vocabulary learning app using SwiftUI, SwiftData, and The Compos
 
 ## 🧱 Architecture
 
-- **MV reducer-based** using [TCA](https://github.com/pointfreeco/swift-composable-architecture)
-- **SwiftData** is used for local persistence (`WordCard`, `XPTracker`)
-- All state, actions, and business logic are centralized in `FlashCardFeature`
+- **Data Layer** server side requests and data base operations.
+- **Domain Layer** contains any logics of application
+- **Feature Layer - MV reducer-based** using [TCA](https://github.com/pointfreeco/swift-composable-architecture) contains views
+- **SwiftData** is used for local persistence (`FlashCard`, `XPTracker`)
+- All state, actions, and business logic in `Feature Layer` are centralized in `FlashCardFeature` and `XPTrackerFeature`
 - Views are reactive and testable using `Store` and `WithViewStore`
 
 ---
@@ -35,4 +37,4 @@ A single-screen vocabulary learning app using SwiftUI, SwiftData, and The Compos
 ## ⚖️ Trade-offs
 
 - Used in-memory SwiftData for testing; real persistence requires iOS 18+
-- TCA adds complexity but ensures scalable state handling and testability
+- This Clean Architecture and TCA adds complexity but ensures scalable state handling and testability
