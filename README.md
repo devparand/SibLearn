@@ -26,11 +26,11 @@ A single-screen vocabulary learning app using SwiftUI, SwiftData, and The Compos
 ## 🧪 Testing
 
 - Run unit tests via `⌘U` or from the **Test Navigator**
-- Uses `XCTest` + `TCA.TestStore`
+- Uses `Swift Testing` + `TCA.TestStore`
 - Key logic tested:
   - Answer validation
   - XP increment
-  - State transitions (e.g., adding cards, flipping)
+  - SwiftUI Preview Snapshot
 
 ---
 
