@@ -47,8 +47,8 @@ struct HomeView: View {
                     .toggleSheet(value)
             })) {
                 AddCardView(
-                    store: Store(initialState: XPTrackerFeature.State()) {
-                        XPTrackerFeature()
+                    store: Store(initialState: AddCardFeature.State()) {
+                        AddCardFeature()
                     }
                 )
             }

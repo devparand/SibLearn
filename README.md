@@ -10,7 +10,7 @@ A single-screen vocabulary learning app using SwiftUI, SwiftData, and The Compos
 - **Domain Layer** contains any logics of application
 - **Feature Layer - MV reducer-based** using [TCA](https://github.com/pointfreeco/swift-composable-architecture) contains views
 - **SwiftData** is used for local persistence (`FlashCard`, `XPTracker`)
-- All state, actions, and business logic in `Feature Layer` are centralized in `FlashCardFeature` and `XPTrackerFeature`
+- All state, actions, and business logic in `Feature Layer` are centralized in `FlashCardFeature` and `AddCardFeature`
 - Views are reactive and testable using `Store` and `WithViewStore`
 
 ---

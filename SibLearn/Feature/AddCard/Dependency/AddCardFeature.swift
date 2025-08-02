@@ -1,5 +1,5 @@
 //
-//  XPTrackerFeature.swift
+//  AddCardFeature.swift
 //  SibLearn
 //
 //  Created by Parsa on 8/1/25.
@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 
 @Reducer
-struct  XPTrackerFeature {
+struct  AddCardFeature {
     
     @ObservableState
     struct State: Equatable {
@@ -30,7 +30,7 @@ struct  XPTrackerFeature {
 }
 
 //MARK: Reducer
-extension XPTrackerFeature {
+extension AddCardFeature {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
@@ -52,7 +52,7 @@ extension XPTrackerFeature {
 }
 
 //MARK: Private Functions
-extension XPTrackerFeature {
+extension AddCardFeature {
     
     private func performAddFlashCard(word: String, meaning: String) -> Effect<Action> {
         return .run { [provider = flashCardProvider] send in
@@ -61,7 +61,7 @@ extension XPTrackerFeature {
                 await send(.dismissView)
             }
             catch {
-                print("XPTrackerFeature: Add flashcard is failed: \(error)")
+                print("AddCardFeature: Add flashcard is failed: \(error)")
             }
         }
     }

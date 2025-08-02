@@ -12,9 +12,9 @@ struct AddCardView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    let store: StoreOf<XPTrackerFeature>
+    let store: StoreOf<AddCardFeature>
     
-    init(store: StoreOf<XPTrackerFeature>) {
+    init(store: StoreOf<AddCardFeature>) {
         self.store = store
     }
     
@@ -123,8 +123,8 @@ struct AddCardView: View {
 
 #Preview {
     AddCardView(
-        store: Store(initialState: XPTrackerFeature.State()) {
-            XPTrackerFeature()
+        store: Store(initialState: AddCardFeature.State()) {
+            AddCardFeature()
         }
     )
 }
