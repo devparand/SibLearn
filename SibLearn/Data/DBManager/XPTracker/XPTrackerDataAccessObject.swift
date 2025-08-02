@@ -16,25 +16,23 @@ public final class XPTrackerDataAccessObject: @unchecked Sendable {
         self.context = context
     }
     
+    @MainActor
     public func getTotalXP() throws -> Int {
-        try DispatchQueue.main.sync {
-            let descriptor = FetchDescriptor<XPTrackerEntity>()
-            return try context.fetch(descriptor).first.map {
-                $0.totalXP
-            } ?? 0
-        }
+        let descriptor = FetchDescriptor<XPTrackerEntity>()
+        return try context.fetch(descriptor).first.map {
+            $0.totalXP
+        } ?? 0
     }
     
+    @MainActor
     public func updateTotalXP(_ totalXP: Int) throws {
-        try DispatchQueue.main.sync {
-            if let existingXPTrackerEntity = try context.fetch(FetchDescriptor<XPTrackerEntity>()).first {
-                if existingXPTrackerEntity.totalXP == 0 { context.insert(existingXPTrackerEntity) }
-                existingXPTrackerEntity.totalXP = totalXP
-            }
-            else {
-                let entity = XPTrackerEntity(totalXP: totalXP)
-                context.insert(entity)
-            }
+        if let existingXPTrackerEntity = try context.fetch(FetchDescriptor<XPTrackerEntity>()).first {
+            if existingXPTrackerEntity.totalXP == 0 { context.insert(existingXPTrackerEntity) }
+            existingXPTrackerEntity.totalXP = totalXP
+        }
+        else {
+            let entity = XPTrackerEntity(totalXP: totalXP)
+            context.insert(entity)
         }
     }
 }

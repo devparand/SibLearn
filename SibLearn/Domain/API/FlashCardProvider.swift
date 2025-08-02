@@ -9,9 +9,9 @@ import Foundation
 import SwiftData
 import Combine
 
-public protocol FlashCardProvider: Actor {
-    func getFlashCards() throws -> [FlashCard]
-    func addFlashCard(flashCard: FlashCard) throws
-    func updateFlashCard(flashCard: FlashCard) throws
+public protocol FlashCardProvider: Actor, Sendable {
+    func getFlashCards() async throws -> [FlashCard]
+    func addFlashCard(flashCard: FlashCard) async throws
+    func updateFlashCard(flashCard: FlashCard) async throws
     func getFlashCardPublisher() -> AnyPublisher<FlashCard, Never>
 }

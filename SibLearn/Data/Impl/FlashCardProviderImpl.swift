@@ -19,16 +19,16 @@ public final actor FlashCardProviderImpl: FlashCardProvider, @unchecked Sendable
         self.flashCardDataAccessObject = flashCardDataAccessObject
     }
     
-    public func getFlashCards() throws -> [FlashCard] {
-        return try flashCardDataAccessObject.getFlashCards().map { $0.toDomain() }
+    public func getFlashCards() async throws -> [FlashCard] {
+        return try await flashCardDataAccessObject.getFlashCards().map { $0.toDomain() }
     }
     
-    public func addFlashCard(flashCard: FlashCard) throws {
-        try flashCardDataAccessObject.addFlashCard(flashCard.toSchema())
+    public func addFlashCard(flashCard: FlashCard) async throws {
+        try await flashCardDataAccessObject.addFlashCard(flashCard.toSchema())
     }
     
-    public func updateFlashCard(flashCard: FlashCard) throws {
-        try flashCardDataAccessObject.updateFlashCard(flashCard.toSchema())
+    public func updateFlashCard(flashCard: FlashCard) async throws {
+        try await flashCardDataAccessObject.updateFlashCard(flashCard.toSchema())
     }
     
     public func getFlashCardPublisher() -> AnyPublisher<FlashCard, Never> {

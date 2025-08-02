@@ -6,22 +6,18 @@
 //
 
 import Foundation
-import Combine
+@preconcurrency import Combine
 import ComposableArchitecture
 
 @Reducer
 struct FlashCardFeature {
     
-    private let thread = DispatchQueue(label: "com.SibLearn.FlashCardFeatureThread")
-    
     @Dependency(\.flashCardProvider) var flashCardProvider
     @Dependency(\.xpTrackerProvider) var xpTrackerProvider
     
     @ObservableState
-    struct State: Equatable {
+    struct State: Equatable, Sendable {
         var flashCards: [FlashCard] = []
-        var userInput: String = ""
-        var feedback: Bool? = nil
         var totalXP: Int = 0
         var isAddSheetPresented: Bool = false
     }
@@ -89,7 +85,7 @@ extension FlashCardFeature {
     private func performStartListenToFlashCardPublisher() -> Effect<Action> {
         return .run { [provider = flashCardProvider] send in
             let cancellable = await provider.getFlashCardPublisher()
-                .subscribe(on: thread)
+                .subscribe(on: DispatchQueue(label: "com.SibLearn.FlashCardFeatureThread"))
                 .receive(on: DispatchQueue.main)
                 .sink { flashCard in
                     Task { @MainActor in
@@ -132,14 +128,14 @@ extension FlashCardFeature {
     }
     
     private func performCheckAnswer(_ state: State, flashCard: FlashCard, answer: String) -> Effect<Action> {
-        return .run { send in
+        return .run { [provider = flashCardProvider, xpProvider = xpTrackerProvider]  send in
             do {
-                let isCorrect = flashCard.meaning == answer.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+                let isCorrect = flashCard.meaning.trim() == answer.trim()
                 let newFlashCard = flashCard.copy(isCorrect: isCorrect)
-                try await flashCardProvider.updateFlashCard(flashCard: newFlashCard)
+                try await provider.updateFlashCard(flashCard: newFlashCard)
                 if isCorrect {
                     let xp = state.totalXP + 10
-                    try await xpTrackerProvider.updateTotalXp(xp)
+                    try await xpProvider.updateTotalXp(xp)
                     await send(.getTotalXp)
                 }
                 await send(.updateFlashCard(newFlashCard))

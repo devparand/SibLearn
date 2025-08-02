@@ -20,53 +20,49 @@ public final class FlashCardDataAccessObject: @unchecked Sendable {
         self.context = context
     }
     
+    @MainActor
     public func getFlashCards() throws -> [FlashCardSchema] {
-        try DispatchQueue.main.sync {
-            let descriptor = FetchDescriptor<FlashCardEntity>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
-            return try context.fetch(descriptor).map {
-                createSchema(from: $0)
-            }
+        let descriptor = FetchDescriptor<FlashCardEntity>(sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+        return try context.fetch(descriptor).map {
+            createSchema(from: $0)
         }
     }
     
+    @MainActor
     public func addFlashCard(_ flashCard: FlashCardSchema) throws {
-        try DispatchQueue.main.sync {
-            let word = flashCard.word
-            let predicate = #Predicate<FlashCardEntity> {
-                $0.word == word
-            }
-            let descriptor = FetchDescriptor<FlashCardEntity>(predicate: predicate, sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
-            if let entity = try context.fetch(descriptor).first {
-                entity.word = flashCard.word
-                entity.meaning = flashCard.meaning
-                entity.isCorrect = nil
-                entity.createdAt = Int(Date().timeIntervalSince1970)
-                try context.save()
-                flashCardPublisher.send(createSchema(from: entity))
-            }
-            else {
-                let entity = FlashCardEntity(word: flashCard.word, meaning: flashCard.meaning)
-                context.insert(entity)
-                try context.save()
-                flashCardPublisher.send(createSchema(from: entity))
-            }
-
+        let word = flashCard.word
+        let predicate = #Predicate<FlashCardEntity> {
+            $0.word == word
+        }
+        let descriptor = FetchDescriptor<FlashCardEntity>(predicate: predicate, sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+        if let entity = try context.fetch(descriptor).first {
+            entity.word = flashCard.word
+            entity.meaning = flashCard.meaning
+            entity.isCorrect = nil
+            entity.createdAt = Int(Date().timeIntervalSince1970)
+            try context.save()
+            flashCardPublisher.send(createSchema(from: entity))
+        }
+        else {
+            let entity = FlashCardEntity(word: flashCard.word, meaning: flashCard.meaning)
+            context.insert(entity)
+            try context.save()
+            flashCardPublisher.send(createSchema(from: entity))
         }
     }
     
+    @MainActor
     public func updateFlashCard(_ flashCard: FlashCardSchema) throws {
-        try DispatchQueue.main.sync {
-            let word = flashCard.word
-            let predicate = #Predicate<FlashCardEntity> {
-                $0.word == word
-            }
-            let descriptor = FetchDescriptor<FlashCardEntity>(predicate: predicate, sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
-            guard let entity = try context.fetch(descriptor).first else {
-                return
-            }
-            entity.isCorrect = flashCard.isCorrect
-            try context.save()
+        let word = flashCard.word
+        let predicate = #Predicate<FlashCardEntity> {
+            $0.word == word
         }
+        let descriptor = FetchDescriptor<FlashCardEntity>(predicate: predicate, sortBy: [SortDescriptor(\.createdAt, order: .reverse)])
+        guard let entity = try context.fetch(descriptor).first else {
+            return
+        }
+        entity.isCorrect = flashCard.isCorrect
+        try context.save()
     }
 }
 

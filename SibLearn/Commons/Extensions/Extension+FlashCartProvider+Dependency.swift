@@ -31,6 +31,12 @@ public extension DependencyValues {
            let dao = FlashCardDataAccessObject(context: context)
            return FlashCardProviderImpl(flashCardDataAccessObject: dao)
        }()
+        
+        public static let testValue: FlashCardProvider = {
+            let context = ModelContext(DependencyValues.sharedModelContainer)
+            let dao = FlashCardDataAccessObject(context: context)
+            return FlashCardProviderImpl(flashCardDataAccessObject: dao)
+        }()
     }
     
     var flashCardProvider: FlashCardProvider {

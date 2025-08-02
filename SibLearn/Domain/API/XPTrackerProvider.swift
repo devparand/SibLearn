@@ -10,6 +10,6 @@ import SwiftData
 
 public protocol XPTrackerProvider: Actor {
     
-    func getTotalXp() throws -> Int
-    func updateTotalXp(_ xp: Int) throws
+    func getTotalXp() async throws -> Int
+    func updateTotalXp(_ xp: Int) async throws
 }

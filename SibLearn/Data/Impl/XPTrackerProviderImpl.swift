@@ -19,12 +19,12 @@ public final actor XPTrackerProviderImpl: XPTrackerProvider, @unchecked Sendable
         self.xpTrackerDataAccessObject = xpTrackerDataAccessObject
     }
     
-    public func getTotalXp() throws -> Int {
-        return try xpTrackerDataAccessObject.getTotalXP()
+    public func getTotalXp() async throws -> Int {
+        return try await xpTrackerDataAccessObject.getTotalXP()
     }
     
-    public func updateTotalXp(_ xp: Int) throws {
-        try xpTrackerDataAccessObject.updateTotalXP(xp)
+    public func updateTotalXp(_ xp: Int) async throws {
+        try await xpTrackerDataAccessObject.updateTotalXP(xp)
     }
     
     

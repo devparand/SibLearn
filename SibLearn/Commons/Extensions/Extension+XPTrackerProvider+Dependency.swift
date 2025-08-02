@@ -33,6 +33,12 @@ public extension DependencyValues {
            let dao = XPTrackerDataAccessObject(context: context)
            return XPTrackerProviderImpl(xpTrackerDataAccessObject: dao)
        }()
+        
+        public static let testValue: XPTrackerProvider = {
+            let context = ModelContext(DependencyValues.sharedModelContainer)
+            let dao = XPTrackerDataAccessObject(context: context)
+            return XPTrackerProviderImpl(xpTrackerDataAccessObject: dao)
+        }()
     }
     
     var xpTrackerProvider: XPTrackerProvider {
